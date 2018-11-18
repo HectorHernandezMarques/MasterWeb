@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+{{myorder}}
+
+<button onclick="deleteOrderAlert()">Delete Order</button>
+
+<script>
+    function deleteOrderAlert() {
+        if (confirm("Man! Are you sure of deleting the Order!!!")) {
+            window.location.href = "/deleteorder?id={{#myorder}}{{id}}{{/myorder}}";
+        }
+    }
+</script>
+
+</body>
+</html>

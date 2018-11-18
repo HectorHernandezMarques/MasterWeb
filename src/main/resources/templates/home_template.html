@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<p>Orders:</p>
+<ul>
+    {{#myorders}}
+    <li><a href="/order?id={{id}}">{{title}}</a></li>
+    {{/myorders}}
+    {{^myorders}}
+    <p>No Orders to show yet!!!!!!!!!</p>
+    {{/myorders}}
+    <a href="/neworderform">New Order</a>
+</ul>
+</body>
+</html>
