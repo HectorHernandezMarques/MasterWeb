@@ -4,6 +4,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="snbutton.js"></script>
 <script src="MyOrderElementsGenerator.js"></script>
+<script src="CheckBoxStriker.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -18,7 +19,7 @@
     </div>
     <div id="order-form-elements" class="order-form-input-div">
         {{#myorder}}{{#orderElements}}
-        <p class="element-paragraph"><input type="checkbox" name="strikedElements" value="{{-index}}" {{#striked}}checked{{/striked}}> <input type="text" name="orderElementNames" value="{{name}}" placeholder="New Element" class="order-form-input"></p>
+        <p class="element-paragraph"><input type="checkbox" onchange="strikeTextBox(this)" name="strikedElements" value="{{-index}}" class=order-form-checkbox {{#striked}}checked{{/striked}}> <input type="text" name="orderElementNames" value="{{name}}" placeholder="New Element" {{#striked}}style="text-decoration: line-through;"{{/striked}} class="order-form-input"></p>
         {{/orderElements}}{{/myorder}}
     </div>
     <div>
