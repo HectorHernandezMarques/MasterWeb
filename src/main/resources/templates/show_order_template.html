@@ -11,8 +11,9 @@
 <p>{{#striked}}<strike>{{/striked}}{{name}}{{#striked}}</strike>{{/striked}}</p>
 {{/orderElements}}{{/myorder}}
 
-<button onclick="deleteOrderAlert()">Delete Order</button>
 <button onclick="location.href='/editorderform?id={{#myorder}}{{id}}{{/myorder}}'">Edit Order</button>
+<button onclick="deleteOrderAlert()">Delete Order</button>
+<button onclick="location.href='/'">Back to Orders list</button>
 
 </body>
 </html>
