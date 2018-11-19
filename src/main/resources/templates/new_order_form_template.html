@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="//code.jquery.com/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="snbutton.js"></script>
+<script src="MyOrderElementsGenerator.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <form action='/neworder'>
-    <input id="some-input-field" placeholder="input something" class="new-order-input">
-    <input id="title-id" name='title' placeholder="Title" class="new-order-input">
-    <button id="snbtn" class="btn btn-primary" value='Create Order' disabled="disabled">SUBMIT</button>
+    <div class="order-form-input-div">
+        <input id="title-id" name="title" placeholder="Title" class="order-form-input">
+        <button id="element-button" type="button" class="button" onclick="createNewElementInForm()">New Element</button>
+        <button id="snbtn" class="btn btn-primary" value="Create Order" disabled="true">Create Order</button>
+        <button type="button" onclick="location.href='/'">Cancel</button>
+    </div>
+    <div id="order-form-elements" class="order-form-input-div">
+        <p class="element-paragraph"><input type="text" name="orderElementNames" placeholder="New Element" class="order-form-input"></p>
+    </div>
 </form>
 <script>
     $().ready(function() {

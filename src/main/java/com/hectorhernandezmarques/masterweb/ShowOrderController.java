@@ -1,5 +1,6 @@
 package com.hectorhernandezmarques.masterweb;
 
+import com.hectorhernandezmarques.masterweb.models.MyOrder;
 import com.hectorhernandezmarques.masterweb.repositories.MyOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,11 @@ public class ShowOrderController {
     private MyOrderRepository myOrderRepository;
 
     @RequestMapping("/order")
-    public String showOrder(Model model, @RequestParam long id) {
-        model.addAttribute("myorder", myOrderRepository.findOne(id));
+    public String showOrder(Model model, @RequestParam long id) throws ResourceNotFoundException {
+        MyOrder myOrder = myOrderRepository.findOne(id);
+        if (myOrder == null)
+            throw new ResourceNotFoundException();
+        model.addAttribute("myorder", myOrder);
 
         return "show_order_template";
     }

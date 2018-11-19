@@ -20,8 +20,6 @@ public class HomeController {
 
     @PostConstruct
     public void init() {
-        myOrderRepository.save(new MyOrder("Order1"));
-        myOrderRepository.save(new MyOrder("Order2"));
     }
 
     HomeController(){

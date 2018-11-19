@@ -13,13 +13,14 @@ public class MyOrder {
 
     private String title = "";
 
-    @OneToMany
+    @OneToMany(
+            cascade = CascadeType.ALL)
     private List<OrderElement> orderElements = new ArrayList<>();
 
-    public MyOrder(){
+    public MyOrder() {
     }
 
-    public MyOrder(String title){
+    public MyOrder(String title) {
         this.title = title;
     }
 

@@ -15,6 +15,20 @@ public class OrderElement {
 
     private String name;
 
+    private boolean striked = false;
+
+    public OrderElement() {
+    }
+
+    public OrderElement(String name) {
+        this(name, false);
+    }
+
+    public OrderElement(String name, boolean striked) {
+        this.name = name;
+        this.striked = striked;
+    }
+
     public long getId() {
         return id;
     }

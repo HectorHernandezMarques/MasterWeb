@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="snbutton.js"></script>
+<script src="MyOrderElementsGenerator.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/editorder">
+    <div class="edit-order-form-input-div">
+        <input id="title-id" name="title" value="{{#myorder}}{{title}}{{/myorder}}" placeholder="Title" class="order-form-input">
+        <button id="element-button" type="button" class="button" onclick="createNewElementInFormWithCheckbox()">New Element</button>
+        <button id="snbtn" class="btn btn-primary" value="Create Order" disabled="true">Make Edition</button>
+        <button type="button" onclick="location.href='/order?id={{#myorder}}{{id}}{{/myorder}}'">Cancel</button>
+    </div>
+    <div id="order-form-elements" class="order-form-input-div">
+        {{#myorder}}{{#orderElements}}
+        <p class="element-paragraph"><input type="checkbox" name="strikedElements" value="{{-index}}" {{#striked}}checked{{/striked}}> <input type="text" name="orderElementNames" value="{{name}}" placeholder="New Element" class="order-form-input"></p>
+        {{/orderElements}}{{/myorder}}
+    </div>
+    <div>
+        <input type="hidden" name="id" value="{{#myorder}}{{id}}{{/myorder}}">
+    </div>
+</form>
+<script>
+    $().ready(function() {
+        SNButton.init("snbtn");
+        generateDeleteButtons("order-form-elements");
+        disableButtonIfSomeInputIsEmpty("#snbtn", ".order-form-input")
+    });
+</script>
+</body>
+</html>
