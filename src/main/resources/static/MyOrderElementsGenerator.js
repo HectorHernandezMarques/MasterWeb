@@ -28,7 +28,6 @@ function createNewElementInFormWithCheckbox() {
         strikeTextBox(this);
     };
     strikedCheckBox.name = "strikedElements";
-    strikedCheckBox.value = document.getElementById("order-form-elements").childElementCount + 1;
     strikedCheckBox.className = "order-form-checkbox check-box";
 
     var newElement = document.createElement("input");
@@ -42,9 +41,18 @@ function createNewElementInFormWithCheckbox() {
 
     document.getElementById("order-form-elements").appendChild(paragraph);
 
+    generateChecboxValues();
+
     generateDeleteButtons("order-form-elements");
 
     disableButtonIfSomeInputIsEmpty("#snbtn", ".order-form-input");
+}
+
+function generateChecboxValues() {
+    checkboxes = document.getElementsByClassName("order-form-checkbox");
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes.item(i).value = i + 1;
+    }
 }
 
 function generateDeleteButtons(divWithElements) {
@@ -60,6 +68,7 @@ function generateDeleteButtons(divWithElements) {
             elementParagraphs.item(j).appendChild(deleteButton);
             $("#" + deleteButton.id).on("click", function () {
                 this.parentNode.remove();
+                generateChecboxValues();
                 generateDeleteButtons("order-form-elements");
                 disableButtonIfSomeInputIsEmpty("#snbtn", ".order-form-input");
             });
