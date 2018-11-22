@@ -27,12 +27,9 @@ function createNewElementInFormWithCheckbox() {
     strikedCheckBox.onchange = function (ev) {
         strikeTextBox(this);
     };
-    //strikedCheckBox.setAttribute("onchange", function () {
-    //    strikedCheckBox(this);
-    //});
     strikedCheckBox.name = "strikedElements";
     strikedCheckBox.value = document.getElementById("order-form-elements").childElementCount + 1;
-    strikedCheckBox.className = "order-form-checkbox";
+    strikedCheckBox.className = "order-form-checkbox check-box";
 
     var newElement = document.createElement("input");
     newElement.type = "text";
@@ -58,7 +55,7 @@ function generateDeleteButtons(divWithElements) {
             var deleteButton = document.createElement("button");
             deleteButton.id = _.uniqueId("delete-element-button-id-");
             deleteButton.type = "button";
-            deleteButton.className = "delete-element-button";
+            deleteButton.className = "delete-element-button btn btn-secondary";
             deleteButton.appendChild(document.createTextNode("Delete"));
             elementParagraphs.item(j).appendChild(deleteButton);
             $("#" + deleteButton.id).on("click", function () {

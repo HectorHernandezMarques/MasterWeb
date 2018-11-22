@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/grayscale.min.css" rel="stylesheet">
+
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="snbutton.js"></script>
@@ -11,23 +24,33 @@
 </head>
 <body>
 <form action="/editorder">
-    <div class="edit-order-form-input-div">
-        <input id="title-id" name="title" value="{{#myorder}}{{title}}{{/myorder}}" placeholder="Title" class="order-form-input">
-        <button id="element-button" type="button" class="button" onclick="createNewElementInFormWithCheckbox()">New Element</button>
-        <button id="snbtn" class="btn btn-primary" value="Create Order" disabled="true">Make Edition</button>
-        <button type="button" onclick="location.href='/order?id={{#myorder}}{{id}}{{/myorder}}'">Cancel</button>
+    <div class="order-form-input-div">
+        <input id="title-id" class="order-form-input" name="title" value="{{#myorder}}{{title}}{{/myorder}}"
+               placeholder="Title">
+        <button id="element-button" type="button" class="btn btn-primary"
+                onclick="createNewElementInFormWithCheckbox()">
+            New Element
+        </button>
+        <button id="snbtn" class="btn btn-success" value="Create Order" disabled="true">Make Edition</button>
     </div>
     <div id="order-form-elements" class="order-form-input-div">
         {{#myorder}}{{#orderElements}}
-        <p class="element-paragraph"><input type="checkbox" onchange="strikeTextBox(this)" name="strikedElements" value="{{-index}}" class=order-form-checkbox {{#striked}}checked{{/striked}}> <input type="text" name="orderElementNames" value="{{name}}" placeholder="New Element" {{#striked}}style="text-decoration: line-through;"{{/striked}} class="order-form-input"></p>
+        <p class="element-paragraph">
+            <input type="checkbox" class="order-form-checkbox check-box" onchange="strikeTextBox(this)" name="strikedElements"
+                   value="{{-index}}" {{#striked}}checked{{/striked}}>
+            <input type="text" name="orderElementNames" value="{{name}}" placeholder="New Element"
+                   {{#striked}}style="text-decoration: line-through;" {{/striked}} class="order-form-input"></p>
         {{/orderElements}}{{/myorder}}
     </div>
     <div>
         <input type="hidden" name="id" value="{{#myorder}}{{id}}{{/myorder}}">
     </div>
 </form>
+<button class="btn btn-warning" type="button" onclick="location.href='/order?id={{#myorder}}{{id}}{{/myorder}}'">
+    Cancel
+</button>
 <script>
-    $().ready(function() {
+    $().ready(function () {
         SNButton.init("snbtn");
         generateDeleteButtons("order-form-elements");
         disableButtonIfSomeInputIsEmpty("#snbtn", ".order-form-input")
